@@ -103,14 +103,17 @@ def error():
 
 
 def main():
-    searches = read_keywords()
-    item_ids = read_item_ids()
+    try:
+        searches = read_keywords()
+        item_ids = read_item_ids()
 
-    for search in searches:
-        json = retrieve(search)
-        process(item_ids, json)
+        for search in searches:
+            json = retrieve(search)
+            process(item_ids, json)
+    except KeyboardInterrupt:
+        print("\n\nGoodbye!")
+        sys.exit()
 
 
 if __name__ == "__main__":
     main()
-
